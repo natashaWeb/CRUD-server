@@ -53,7 +53,7 @@ exports.eliminarProducto = async (req, res) => {
     try {
         // Buscamos producto a eliminar
         let producto = await Producto.findByIdAndDelete(id);
-        res.status(204).json({ mensaje: "Producto eliminado correctamente" });
+        res.status(200).json(producto);
     } catch (error) {
         console.error("Error al eliminar el producto:", error);
         res.status(500).json({
