@@ -7,7 +7,7 @@ exports.crearProducto = async (req, res) => {
         // Creamos el producto
         if (
             titulo.length === 0 ||
-            precio >= 0 ||
+            precio < 0 ||
             imagen.length === 0 ||
             categoria.length === 0
         ) {
@@ -43,7 +43,7 @@ exports.editarProducto = async (req, res) => {
         }
         if (
             titulo.length === 0 ||
-            precio >= 0 ||
+            precio < 0 ||
             imagen.length === 0 ||
             categoria.length === 0
         ) {
