@@ -20,6 +20,9 @@ router.delete(
     productControllers.eliminarProducto
 );
 router.get("/product/get", productControllers.obtenerProductos);
+router.post("/product/category", productControllers.obtenerProductosPorCategoria);
+router.get("/product/hotsale/get", productControllers.obtenerProductosHotSale)
+router.get('/product/get/:id', productControllers.obtenerProductoPorId);
 router.post(
     "/myproduct/get",
     authControllers.isAuth,

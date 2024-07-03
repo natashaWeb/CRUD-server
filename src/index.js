@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const morgan = require("morgan");
 
 const cors = require("cors");
 
@@ -18,13 +19,16 @@ const PORT = process.env.PORT || 3000;
 
 // Configuramos cors
 
-app.use(cors({
-         origin: '*', // Permite solo desde este origen
-         methods: ['GET', 'POST', "DELETE", "PUT"], // Métodos HTTP permitidos
-         allowedHeaders: ['Content-Type', "authorization"], // Encabezados permitidos
-     }));
+app.use(
+    cors({
+        origin: "*", // Permite solo desde este origen
+        methods: ["GET", "POST", "DELETE", "PUT"], // Métodos HTTP permitidos
+        allowedHeaders: ["Content-Type", "authorization"], // Encabezados permitidos
+    })
+);
 
 // Iniciamos middlewares para recibir informacion del cliente
+app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
