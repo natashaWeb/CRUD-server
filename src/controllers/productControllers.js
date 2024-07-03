@@ -5,6 +5,14 @@ exports.crearProducto = async (req, res) => {
     const { titulo, precio, imagen, categoria, ownerId } = req.body;
     try {
         // Creamos el producto
+        if (
+            titulo.length === 0 ||
+            precio >= 0 ||
+            imagen.length === 0 ||
+            categoria.length === 0
+        ) {
+            return res.status(500).json({ error: "Complete todos los datos" });
+        }
         const nuevoProducto = new Producto({
             titulo,
             precio,
@@ -32,6 +40,14 @@ exports.editarProducto = async (req, res) => {
         let producto = await Producto.findById(id);
         if (!producto) {
             return res.status(404).json({ error: "Producto no encontrado" });
+        }
+        if (
+            titulo.length === 0 ||
+            precio >= 0 ||
+            imagen.length === 0 ||
+            categoria.length === 0
+        ) {
+            return res.status(500).json({ error: "Complete todos los datos" });
         }
         // En caso de existir editar
         producto.titulo = titulo;
