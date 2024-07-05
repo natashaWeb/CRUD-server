@@ -14,7 +14,7 @@ mongoose
         const usuariosPredefinidos = [
             { usuario: "admin", contraseña: "1234", rol: 2 },
             { usuario: "vendedor", contraseña: "1234", rol: 1 },
-            { usuario: "cliente", contraseña: "1234", rol: 1 },
+            { usuario: "cliente", contraseña: "1234", rol: 0 },
         ];
         for (let usuario of usuariosPredefinidos) {
             try {
