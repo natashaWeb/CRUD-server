@@ -11,12 +11,8 @@ exports.login = async (req, res) => {
         if (!usuarioVerificar) {
             return res.status(404).json({ error: "Usuario no encontrado" });
         }
-        // Comparamos las contraseñas
-        const contraseñaValida = await bcrypt.compare(
-            contraseña,
-            usuarioVerificar.contraseña
-        );
-        if (!contraseñaValida) {
+        // Verificamos contraseña
+        if (contraseña !== usuarioVerificar.contraseña) {
             return res.status(401).json({ error: "Contraseña incorrecta" });
         }
         // Firmamos el token
